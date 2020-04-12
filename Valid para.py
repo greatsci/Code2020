@@ -2,9 +2,28 @@
 # The brackets must close in the correct order.
 
 
-def validP(num):
-    if num:
-        return 0
-
-
+class Solution(object):
+  def isValid(self, input):
+    """
+    input: string input
+    return: boolean
+    """
+    # write your solution here
+    # 2/26 copied but modified
+    # Laioffer answer might be wrong
+    s = []
+    match = {'(' : ')', '[' : ']', '{' : '}'}
+    for p in input:
+      if p in match:
+        s.append(p)
+      elif s and match[s[-1]] == p:
+        s.pop()
+      else:
+        return False
+    if not s:
+      return True
+    else:
+      return False
+# T: O(n)
+# S: O(n)
 
