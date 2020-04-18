@@ -2,6 +2,7 @@
   <dictionary name="ningz">
     <words>
       <w>dedup</w>
+      <w>dequeue</w>
       <w>linkedlist</w>
     </words>
   </dictionary>
