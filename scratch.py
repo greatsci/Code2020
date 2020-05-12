@@ -1,19 +1,14 @@
-n = 13
+def solve(s):
+    lst = s.split(' ')
+    res = []
+    for word in lst:
+        if word[0].isalpha():
+            res.append(word.capitalize())
+        else:
+            res.append(word)
+    return ' '.join(res)
 
-res = 0
-digit = n
-aug = 0
-# num = digit
-# while num // 10 != 0:
-#     aug += 1
-#     num = num // 10
-
-for i in range(n):
-    res += digit * 10**(i + aug)
-    # aug = 0
-    num = digit
-    while num // 10 != 0:
-        aug += 1
-        num = num // 10
-    digit -= 1
-print(res)
+# Test
+s = '12dsg'
+print(s.split(' '))
+print(s.capitalize())
