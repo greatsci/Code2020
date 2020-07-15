@@ -6,7 +6,9 @@ import time
 candidates = set(['Card Was Delivered To Me By The Post Office', 'New Card Is Being Produced', 'Card Was Mailed To Me', 'Card Was Picked Up By The United States Postal Service', 'Case Was Approved'])
 other = set(['', ' ', 'Case Rejected Because I Sent An Incorrect Fee', 'Fees Were Waived', 'Request for Initial Evidence Was Mailed', 'Fingerprint Fee Was Received'])
 pending ='Case Was Received'
-my_case_num = 2090248050
+# my_case_num = 2090248050
+start = 2090248100
+end = 2090248201
 url_prefix = 'https://egov.uscis.gov/casestatus/mycasestatus.do?appReceiptNum=YSC'
 count_total = 0
 count_valid = 0
@@ -15,13 +17,11 @@ count_pending = 0
 step = 0
 timestr = time.strftime("%Y%m%d-%H%M%S")
 
-with open('C:\\Users\\ningz\\Desktop\\OPT\\' + timestr + '.csv', 'w', newline='') as csvfile:
-    for i in range(2090248100, 2090249000):
+outfile = 'C:\\Users\\ningz\\Desktop\\OPT\\' + str(start) + '_' + str(end) + '_' + timestr + '.csv'
+with open(outfile, 'w', newline='') as csvfile:
+    for i in range(start, end):
         url = url_prefix + str(i)
         response = requests.get(url)
-    #   Exception has occurred: SSLError
-    #   HTTPSConnectionPool(host='egov.uscis.gov', port=443): Max retries exceeded with url: /casestatus/mycasestatus.do?appReceiptNum=YSC1990232075 (Caused by SSLError("Can't connect to HTTPS URL because the SSL module is not available."))
-    #   File "C:\Users\ningz\Desktop\Code2020\craw.py", line 18, in <module>
         bs = BeautifulSoup(response.text, 'html.parser')
         temp = bs.find(class_='col-lg-12 appointment-sec center')
         if not temp:
@@ -43,10 +43,14 @@ with open('C:\\Users\\ningz\\Desktop\\OPT\\' + timestr + '.csv', 'w', newline=''
         time.sleep(0.2)
         step += 1
         if status != 'Other':
+            s1 = content.split('On ')[1]
+            s2 = s1.split(',')
+            date = s2[0]
+
             reswriter = csv.writer(csvfile, delimiter = ',', quotechar=',', quoting = csv.QUOTE_MINIMAL)
             idx = str(i)
-            reswriter.writerow([idx] + [status] + [content[3:10]])
-            print(i, status, content[3:10])
+            reswriter.writerow([idx] + [status] + [date])
+            print(i, status, date)
 
 print('total:', step)
 # print('total I-765:', count_total)
