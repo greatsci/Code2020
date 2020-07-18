@@ -7,8 +7,8 @@ candidates = set(['Card Was Delivered To Me By The Post Office', 'New Card Is Be
 other = set(['', ' ', 'Case Rejected Because I Sent An Incorrect Fee', 'Fees Were Waived', 'Request for Initial Evidence Was Mailed', 'Fingerprint Fee Was Received'])
 pending ='Case Was Received'
 # my_case_num = 2090248050
-start = 2090248100
-end = 2090248201
+start = 2090248000
+end = 2090249000
 url_prefix = 'https://egov.uscis.gov/casestatus/mycasestatus.do?appReceiptNum=YSC'
 count_total = 0
 count_valid = 0
@@ -43,8 +43,8 @@ with open(outfile, 'w', newline='') as csvfile:
         time.sleep(0.2)
         step += 1
         if status != 'Other':
-            s1 = content.split('On ')[1]
-            s2 = s1.split(',')
+            s1 = content.split('On ', 1)[1]
+            s2 = s1.split(',', 1)
             date = s2[0]
 
             reswriter = csv.writer(csvfile, delimiter = ',', quotechar=',', quoting = csv.QUOTE_MINIMAL)
