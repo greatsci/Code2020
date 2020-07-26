@@ -8,7 +8,7 @@ other = set(['', ' ', 'Case Rejected Because I Sent An Incorrect Fee', 'Fees Wer
 pending ='Case Was Received'
 # my_case_num = 2090248050
 start = 2090248000
-end = 2090249000
+end = 2090248100
 url_prefix = 'https://egov.uscis.gov/casestatus/mycasestatus.do?appReceiptNum=YSC'
 count_total = 0
 count_valid = 0
