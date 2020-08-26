@@ -12,7 +12,6 @@ def paired_reverse_linkedlist(head):
     head.next = remain
     return newhead
 # T:O(n)    S:O(n)
-
 # --------------------------------------------------
 class ListNode(object):
     def __init__(self, value):
