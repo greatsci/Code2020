@@ -1,6 +1,5 @@
 # How to sort numbers with two stacks? (with duplicate values)
 
-
 def stackSorting(input):
     if not input:
         return None
