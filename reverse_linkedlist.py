@@ -1,6 +1,5 @@
 # Reverse a linked list
 
-
 class ListNode(object):
     def __init__(self, value):
         self.val = value
