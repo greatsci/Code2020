@@ -109,7 +109,6 @@ print(stackSorting([5, 1, 1, 2]))
 #
 #     return stack.pop()
 #
-#
 # # Function to print the stack
 # def prints(stack):
 #     for i in range(len(stack) - 1, -1, -1):
