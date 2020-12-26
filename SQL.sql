@@ -5,6 +5,7 @@ CREATE TABLE data.Highschooler (
     grade int
     );
     
+    
 INSERT INTO data.Highschooler(id, name, grade)
 VALUES 
 	(1510, 'Jordan', 9),
